@@ -12,6 +12,8 @@ The project structure will be like this :
 |   +- reviewController.js
 +-- helpers
 |   +- response.js
++-- models
+|   +- reviewModels.js
 +-- routes
 |   +- review.js
 +-- index.js
