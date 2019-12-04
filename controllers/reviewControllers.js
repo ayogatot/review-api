@@ -18,7 +18,7 @@ module.exports = {
         });
       });
     } catch (error) {
-      sendResponse(res, 500, { error: "ini error" });
+      sendResponse(res, 500, { error });
     }
   },
 
@@ -29,6 +29,38 @@ module.exports = {
         .then(result => {
           sendResponse(res, 200, result);
         });
+    } catch (error) {
+      sendResponse(res, 500, { error });
+    }
+  },
+
+  getReviewById: async (req, res) => {
+    try {
+      const id = req.params.id;
+
+      await Review.findById(id, (err, result) => {
+        if (err) sendResponse(res, 500, { err });
+        sendResponse(res, 200, result);
+      });
+    } catch (error) {
+      sendResponse(res, 500, { error });
+    }
+  },
+
+  updateReviewById: async (req, res) => {
+    try {
+      const id = req.params.id;
+      const image = convertImagesBuffer(req.files);
+      const { name, review_comment, review_star } = req.body;
+      const newReview = { name, review_comment, review_star, image };
+
+      await Review.findByIdAndUpdate(id, newReview, (err, result) => {
+        if (err) sendResponse(res, 500, { err });
+        sendResponse(res, 200, {
+          id: result._id,
+          msg: "Review has been updated"
+        });
+      });
     } catch (error) {
       sendResponse(res, 500, { error });
     }

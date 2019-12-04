@@ -7,4 +7,8 @@ Router.route("/")
   .get(reviewController.getAllReview)
   .post(reviewController.createReview);
 
+Router.route("/:id")
+  .get(reviewController.getReviewById)
+  .patch(reviewController.updateReviewById);
+
 module.exports = Router;
