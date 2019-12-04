@@ -52,7 +52,13 @@ module.exports = {
       const id = req.params.id;
       const image = convertImagesBuffer(req.files);
       const { name, review_comment, review_star } = req.body;
-      const newReview = { name, review_comment, review_star, image };
+      const newReview = {
+        name,
+        review_comment,
+        review_star,
+        image,
+        updated_at: Date.now()
+      };
 
       await Review.findByIdAndUpdate(id, newReview, (err, result) => {
         if (err) sendResponse(res, 500, { err });
