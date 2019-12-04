@@ -18,6 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(upload.array("images", 4));
 
+// Routes
 app.get("/", (req, res) => {
   res.status(200).json({
     msg: "Review teroooss"

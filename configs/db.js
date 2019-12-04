@@ -7,7 +7,9 @@ mongoose.connect(
   HOST,
   {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    keepAlive: true,
+    keepAliveInitialDelay: 300000
   },
   err => {
     if (err) throw err;

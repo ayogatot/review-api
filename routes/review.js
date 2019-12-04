@@ -9,6 +9,7 @@ Router.route("/")
 
 Router.route("/:id")
   .get(reviewController.getReviewById)
-  .patch(reviewController.updateReviewById);
+  .patch(reviewController.updateReviewById)
+  .delete(reviewController.deleteReviewById);
 
 module.exports = Router;

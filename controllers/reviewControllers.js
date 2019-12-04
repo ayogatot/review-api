@@ -64,5 +64,20 @@ module.exports = {
     } catch (error) {
       sendResponse(res, 500, { error });
     }
+  },
+
+  deleteReviewById: async (req, res) => {
+    try {
+      const id = req.params.id;
+
+      await Review.findByIdAndDelete(id).then(result => {
+        sendResponse(res, 200, {
+          id: result._id,
+          msg: "Review has been deleted"
+        });
+      });
+    } catch (error) {
+      sendResponse(res, 500, { error });
+    }
   }
 };
