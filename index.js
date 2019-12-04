@@ -9,6 +9,9 @@ const PORT = process.env.PORT || 5050;
 const app = express();
 const upload = multer();
 
+//Helpers
+const { api } = require("./helpers/index");
+
 // Database Connetion
 require("./configs/db");
 
@@ -20,9 +23,7 @@ app.use(upload.array("images", 4));
 
 // Routes
 app.get("/", (req, res) => {
-  res.status(200).json({
-    msg: "Review teroooss"
-  });
+  res.status(200).json(api);
 });
 
 const reviewRoute = require("./routes/review");
