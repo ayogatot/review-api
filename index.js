@@ -16,7 +16,7 @@ require("./configs/db");
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(upload.array());
+app.use(upload.array("images", 4));
 
 app.get("/", (req, res) => {
   res.status(200).json({
